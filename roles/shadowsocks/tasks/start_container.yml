@@ -1,0 +1,12 @@
+# docker run -dt --name shadowsocks -p 443:443 mritd/shadowsocks -s "-s 0.0.0.0 -p 443 -m aes-256-cfb -k test123 --fast-open"
+---
+- name: Start shadowsocks container
+  become: true
+  docker_container:
+    api_version: 1.32
+    name: shadowsocks
+    image: docker pull mritd/shadowsocks
+    tty: true
+    ports: 
+      - "{{ SSPORT | default(443) }}:443"
+    command: -s "-s 0.0.0.0 -p 443 -m aes-256-cfb -k {{ SSPASS | default ('Changeme123.') }} --fast-open"

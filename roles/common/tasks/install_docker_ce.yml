@@ -1,0 +1,31 @@
+---
+- name: Ensure dependency pakcages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - python-pip
+- name: Ensure GPG key
+  become: true
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+- name: Ensure docker repo
+  become: true
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+- name: Install docker-ce
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+- name: Install docker-py
+  become: true
+  pip:
+    name: docker-py
+    state: present
