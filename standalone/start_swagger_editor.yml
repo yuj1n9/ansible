@@ -3,3 +3,4 @@
   tasks:
   - import_tasks: "{{ playbook_dir }}/../roles/common/tasks/ensure_basic_pkgs.yml"
   - import_tasks: "{{ playbook_dir }}/../roles/common/tasks/install_docker_ce.yml"
+  - import_tasks: "{{ playbook_dir }}/../roles/swagger_editor/tasks/start_container.yml"

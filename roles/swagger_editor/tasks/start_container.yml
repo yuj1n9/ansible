@@ -1,0 +1,9 @@
+# docker run -d -p 8080:8080 swaggerapi/swagger-editor
+---
+- name: Start swagger editor container
+  become: true
+  docker_container:
+    name: swagger_editor
+    image: swaggerapi/swagger-editor
+    ports: 
+      - "{{ SEPORT | default(8080) }}:8080"
