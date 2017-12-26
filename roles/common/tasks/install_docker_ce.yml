@@ -27,5 +27,5 @@
 - name: Install docker-py
   become: true
   pip:
-    name: docker-py
+    name: docker
     state: present

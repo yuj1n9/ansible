@@ -3,9 +3,8 @@
 - name: Start shadowsocks container
   become: true
   docker_container:
-    api_version: 1.32
     name: shadowsocks
-    image: docker pull mritd/shadowsocks
+    image: mritd/shadowsocks
     tty: true
     ports: 
       - "{{ SSPORT | default(443) }}:443"

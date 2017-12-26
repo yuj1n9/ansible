@@ -1,5 +1,5 @@
 ---
 - hosts: all
   tasks:
-#  - import_tasks: "{{ playbook_dir }}/../roles/common/tasks/install_docker_ce.yml"
+  - import_tasks: "{{ playbook_dir }}/../roles/common/tasks/install_docker_ce.yml"
   - import_tasks: "{{ playbook_dir }}/../roles/shadowsocks/tasks/start_container.yml"
